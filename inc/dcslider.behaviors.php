@@ -23,8 +23,6 @@ class dcSliderBehaviors
 {
     public static function publicHeadContent($core) {
         $res = '';
-        $plugin_root =
-
         $res .= sprintf(
             '<script type="text/javascript" src="%s/js/jquery.bxslider.js"></script>'."\n",
             html::stripHostURL($core->blog->getQmarkURL().'pf=dcSlider')
@@ -38,10 +36,14 @@ class dcSliderBehaviors
     }
 
     public static function publicTopAfterContent($core) {
-        if (!$core->blog->settings->dcslider->images) {
+        if (!$core->blog->settings->dcslider->automatic_content || !$core->blog->settings->dcslider->images) {
             return;
         }
-        $images = json_decode($core->blog->settings->dcslider->images, true);
+
+        if ($core->url->type != 'default') {
+            return;
+        }
+        $images = dcSlider::getImages();
         $res = '';
         $res .= '<ul class="bxslider">';
         foreach ($images as $image) {

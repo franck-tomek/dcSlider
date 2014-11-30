@@ -28,3 +28,5 @@ if (!$self_ns->active) {
 
 $core->addBehavior('publicHeadContent', array('dcSliderBehaviors', 'publicHeadContent'));
 $core->addBehavior('publicTopAfterContent', array('dcSliderBehaviors', 'publicTopAfterContent'));
+
+$core->tpl->addValue('dcSlider', array('dcSliderTpl', 'dcSlider'));

@@ -19,17 +19,19 @@
 // | MA 02110-1301 USA.                                                    |
 // +-----------------------------------------------------------------------+
 
-$version = $core->plugins->moduleInfo('dcSlider', 'version');
-if (version_compare($core->getVersion('dcSlider'), $version,'>=')) {
-  return;
+class dcSlider
+{
+    public static function getImages() {
+        global $core;
+
+        $images = array();
+        if ($core->blog->settings->dcslider->images) {
+            $images = json_decode($core->blog->settings->dcslider->images, true);
+            if (!$images) {
+                $images = array();
+            }
+        }
+
+        return $images;
+    }
 }
-
-$settings = $core->blog->settings;
-$settings->addNamespace('dcslider');
-
-$settings->dcslider->put('active', false, 'boolean', 'dcSlider plugin activated ?', false);
-$settings->dcslider->put('automatic_content', true, 'boolean', 'Add slider automatically?', false);
-$settings->dcslider->put('images', '[]', 'boolean', 'dcSlider images', false);
-
-$core->setVersion('dcSlider', $version);
-return true;

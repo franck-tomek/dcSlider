@@ -19,17 +19,6 @@
 // | MA 02110-1301 USA.                                                    |
 // +-----------------------------------------------------------------------+
 
-$version = $core->plugins->moduleInfo('dcSlider', 'version');
-if (version_compare($core->getVersion('dcSlider'), $version,'>=')) {
-  return;
+if (!isset($__resources['help']['dcSlider'])) {
+	$__resources['help']['dcSlider'] = dirname(__FILE__).'/help/installation_help.html';
 }
-
-$settings = $core->blog->settings;
-$settings->addNamespace('dcslider');
-
-$settings->dcslider->put('active', false, 'boolean', 'dcSlider plugin activated ?', false);
-$settings->dcslider->put('automatic_content', true, 'boolean', 'Add slider automatically?', false);
-$settings->dcslider->put('images', '[]', 'boolean', 'dcSlider images', false);
-
-$core->setVersion('dcSlider', $version);
-return true;

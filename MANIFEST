@@ -1,3 +1,7 @@
+dcSlider/locales/en/help/installation_help.html
+dcSlider/locales/en/resources.php
+dcSlider/locales/fr/help/installation_help.html
+dcSlider/locales/fr/resources.php
 dcSlider/locales/fr/main.po
 dcSlider/BUGS
 dcSlider/README.md
@@ -6,6 +10,8 @@ dcSlider/_install.php
 dcSlider/_prepend.php
 dcSlider/CHANGELOG.md
 dcSlider/COPYING
+dcSlider/inc/dcslider.php
+dcSlider/inc/dcslider.tpl.php
 dcSlider/inc/dcslider.behaviors.php
 dcSlider/index.php
 dcSlider/css/jquery.bxslider.css

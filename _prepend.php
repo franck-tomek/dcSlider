@@ -22,3 +22,5 @@
 if (!defined('DC_RC_PATH')) { return; }
 
 $__autoload['dcSliderBehaviors'] = dirname(__FILE__).'/inc/dcslider.behaviors.php';
+$__autoload['dcSliderTpl'] = dirname(__FILE__).'/inc/dcslider.tpl.php';
+$__autoload['dcSlider'] = dirname(__FILE__).'/inc/dcslider.php';

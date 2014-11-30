@@ -29,8 +29,10 @@ if (!empty($_SESSION['dcslider_message'])) {
 $is_super_admin = $core->auth->isSuperAdmin();
 $core->blog->settings->addNameSpace('dcslider');
 $dcslider_active = $core->blog->settings->dcslider->active;
-$dcslider_images = implode("\n", json_decode($core->blog->settings->dcslider->images, true));
 $dcslider_was_actived = $dcslider_active;
+
+$dcslider_images = implode("\n", json_decode($core->blog->settings->dcslider->images, true));
+$dcslider_automatic_content = $core->blog->settings->dcslider->automatic_content;
 
 $default_tab = 'settings';
 
@@ -45,6 +47,9 @@ if (!empty($_POST['saveconfig'])) {
                 $dcslider_images = explode("\n", trim($_POST['dcslider_images']));
                 $core->blog->settings->dcslider->put('images', json_encode($dcslider_images), 'string');
             }
+
+            $dcslider_automatic_content = (empty($_POST['dcslider_automatic_content']))?false:true;
+            $core->blog->settings->dcslider->put('automatic_content', $dcslider_automatic_content, 'boolean');
         }
 
         $_SESSION['dcslider_message'] = __('The configuration has been updated.');

@@ -19,17 +19,27 @@
 // | MA 02110-1301 USA.                                                    |
 // +-----------------------------------------------------------------------+
 
-$version = $core->plugins->moduleInfo('dcSlider', 'version');
-if (version_compare($core->getVersion('dcSlider'), $version,'>=')) {
-  return;
+class dcSliderTpl
+{
+    public static function dcSlider($attr) {
+        global $core;
+
+        $res = '<?php $images = dcSlider::getImages();?>';
+        $res .= '<?php if (!empty($images)):?>';
+        $res .= '<ul class="bxslider">';
+        $res .= '<?php foreach ($images as $image):?>';
+        $res .= '<?php printf(\'<li><img src="%s" alt=""></li>\', $image);?>';
+        $res .= '<?php endforeach;?>';
+        $res .= '</ul>';
+
+        $res .= '<script type="text/javascript">';
+        $res .= '$(function() {'."\n";
+        $res .= "\t".'$(\'.bxslider\').bxSlider({'."\n";
+        $res .= "\t".'});';
+        $res .= '});';
+        $res .= '</script>';
+        $res .= '<?php endif;?>';
+
+        return $res;
+    }
 }
-
-$settings = $core->blog->settings;
-$settings->addNamespace('dcslider');
-
-$settings->dcslider->put('active', false, 'boolean', 'dcSlider plugin activated ?', false);
-$settings->dcslider->put('automatic_content', true, 'boolean', 'Add slider automatically?', false);
-$settings->dcslider->put('images', '[]', 'boolean', 'dcSlider images', false);
-
-$core->setVersion('dcSlider', $version);
-return true;
