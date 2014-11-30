@@ -1,0 +1,5 @@
+msgid ""
+msgstr ""
+
+msgid "Enable dcSlider plugin"
+msgstr "Activer le plugin dcSlider"
