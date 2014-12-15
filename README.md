@@ -13,7 +13,7 @@ If you'd like to contribute, please read the [CONTRIBUTING.md file](CONTRIBUTING
 Demo
 ----
 
-You can find, discover and play with a [demo](http://www.nikrou.net/page/dcSlider)
+You can find, discover and play with a [demo](http://www.nikrou.net/pages/dcSlider)
 
 
 Credits
